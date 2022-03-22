@@ -1,9 +1,8 @@
-import { APIResponse, Game } from './../models/game';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
-const baseUrl = 'https://rawg-video-games-database.p.rapidapi.com';
+import { environment as env } from 'src/environments/environment';
+import { APIResponse, Game } from '../game';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +13,14 @@ export class GamesService {
 
   getGameList(ordering: string, search?: string): Observable<APIResponse<Game>> {
     let params = new HttpParams().set('ordering', ordering)
-
     if (search) {
       params = new HttpParams().set('ordering', ordering).set('search', search)
     }
-    return this.http.get<APIResponse<Game>>(`${baseUrl}/games`, { params: params })
+    return this.http.get<APIResponse<Game>>(`${env.BASE_URL}/games`, { params: params })
+  }
 
+  getGameDetails(id: string): Observable<any> {
+    return this.http.get(`${env.BASE_URL}/games/${id}`);
   }
 }
 
