@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Game } from 'src/app/game';
 
+
 @Component({
   selector: 'app-game-tab',
   templateUrl: './game-tab.component.html',
@@ -9,9 +10,11 @@ import { Game } from 'src/app/game';
 export class GameTabComponent implements OnInit {
   @Input()
   game!: Game;
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.game)
   }
 
 }

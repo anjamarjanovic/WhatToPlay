@@ -1,8 +1,8 @@
-import { GamesService } from './../../services/games.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Game } from 'src/app/game';
+import { GamesService } from 'src/app/services/games.service';
 
 @Component({
     selector: 'app-details',
